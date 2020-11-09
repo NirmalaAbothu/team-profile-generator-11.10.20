@@ -45,25 +45,6 @@ applicatin prompts to user the following questions:
 If user select TeamCompleted option from the list
 then application exit and will create the team profile.
 
-## script.js
-
--    Implemented the following functionalities
--    renderCities: if user is existing user then previously visited cities will
-     be displayed
--    getWeather: get weather of current city by passing name as a prarmeter
--    getUVIndex: get UVIndex of current city by passing longitude and latitude as
-     a parameter
--    getFiveDayForecast: to get fiveday forecast by passing city name as parameter in Openweather forecast api url.
-
-## index.html
-
--    Implemented the code for Weather Dashboard using Bootstrap grid system
-
-## css
-
--    added different varieties of styles to html pages using css selectors
--    used id,classes and tag as selectors
-
 ## Built With
 
 Node modules

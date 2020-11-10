@@ -1,19 +1,26 @@
+//Manager module
 const Manager = require("./lib/Manager");
+//Engineer module
 const Engineer = require("./lib/Engineer");
+//Intern module
 const Intern = require("./lib/Intern");
+//inquirer module to prompt the user
 const inquirer = require("inquirer");
+//path module to create directory
 const path = require("path");
+//fs module to interact with I/O file system
 const fs = require("fs");
-
+//creating output folder in dirctory
 const OUTPUT_DIR = path.resolve(__dirname, "output");
 console.log(OUTPUT_DIR);
+//creating team.html file in output folder
 const outputPath = path.join(OUTPUT_DIR, "team.html");
 console.log(outputPath);
-// fs.mkdirSync(OUTPUT_DIR);
-
+//htmlRender module
 const render = require("./lib/htmlRenderer");
-
+//array of employees
 var employees = [];
+//function addManager to prompt the user with Manager questions
 function addManager() {
      inquirer
           .prompt([
@@ -45,19 +52,20 @@ function addManager() {
                     const id = response.id;
                     const email = response.email;
                     const officeNumber = response.officeNumber;
+                    //create instance of Managaer
                     const manager = new Manager(name, id, email, officeNumber);
+                    //push the instance to employees array
                     employees.push(manager);
                } catch (err) {
                     console.log(err);
                }
-
-               addTemMember();
+               //function addTeamMember
+               addTeamMember();
           });
-     //  addTemMember();
 }
 
-//function
-function addTemMember() {
+//function addTemaMember to give choice to user to add more team members
+function addTeamMember() {
      inquirer
           .prompt([
                {
@@ -86,18 +94,20 @@ function addTemMember() {
           });
 }
 
+//function addIntern to prompt the user with Intern questions
+
 function addIntern() {
      inquirer
           .prompt([
                {
                     type: "input",
                     name: "name",
-                    message: "What is your Engineer name?",
+                    message: "What is your Intern name?",
                },
                {
                     type: "input",
                     name: "id",
-                    message: "Please enter id of the Engineer",
+                    message: "Please enter id of the Intern",
                },
                {
                     type: "input",
@@ -117,16 +127,19 @@ function addIntern() {
                     const id = response.id;
                     const email = response.email;
                     const school = response.school;
+                    //create instance of Intern
                     const intern = new Intern(name, id, email, school);
+                    //push the instance to employees array
                     employees.push(intern);
                } catch (err) {
                     console.log(err);
                }
-               addTemMember();
+               //function addTeamMember
+               addTeamMember();
           });
 }
 
-//function addEngineer
+//function addEngineer to prompt the user with Engineer questions
 function addEngineer() {
      inquirer
           .prompt([
@@ -158,27 +171,31 @@ function addEngineer() {
                     const id = response.id;
                     const email = response.email;
                     const githubUsername = response.githubUsername;
+                    //create instance of Engineer
                     const engineer = new Engineer(
                          name,
                          id,
                          email,
                          githubUsername
                     );
+                    //push the instance to employees array
                     employees.push(engineer);
                } catch (err) {
                     console.log(err);
                }
-               addTemMember();
+               //calling addTeamMember function
+               addTeamMember();
           });
 }
 
-//function teamCompleted
+//function teamCompleted to call render function to generator team.html file
 function teamCompleted() {
      var output = render(employees);
      console.log(output);
      try {
           if (!fs.existsSync(OUTPUT_DIR)) {
                fs.mkdirSync(OUTPUT_DIR);
+               fs.writeFileSync(outputPath, output);
           } else {
                fs.writeFileSync(outputPath, output);
                console.log(outputPath);
@@ -187,27 +204,5 @@ function teamCompleted() {
           console.log("An error occured");
      }
 }
-
-// Write code to use inquirer to gather information about the development team members,
-// and to create objects for each team member (using the correct classes as blueprints!)
+//calling addManager function
 addManager();
-
-// After the user has input all employees desired, call the `render` function (required
-// above) and pass in an array containing all employee objects; the `render` function will
-// generate and return a block of HTML including templated divs for each employee!
-
-// After you have your html, you're now ready to create an HTML file using the HTML
-// returned from the `render` function. Now write it to a file named `team.html` in the
-// `output` folder. You can use the variable `outputPath` above target this location.
-// Hint: you may need to check if the `output` folder exists and create it if it
-// does not.
-
-// HINT: each employee type (manager, engineer, or intern) has slightly different
-// information; write your code to ask different questions via inquirer depending on
-// employee type.
-
-// HINT: make sure to build out your classes first! Remember that your Manager, Engineer,
-// and Intern classes should all extend from a class named Employee; see the directions
-// for further information. Be sure to test out each class and verify it generates an
-// object with the correct structure and methods. This structure will be crucial in order
-// for the provided `render` function to work! ```

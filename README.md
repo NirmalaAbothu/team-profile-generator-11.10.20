@@ -52,8 +52,14 @@ Node modules
 -    Inquirer : to prompts the user with questions
 -    fs : to interact with I/O file system
 -    path : to create the directory
--    css " to style the team html page
--    classes and inheritance : to crete the Emplyoee's objects(Manager,Engineer,and Intern)
+-    css : to style the team html page
+
+Classes and inheritance : to crete the Emplyoee's objects(Manager,Engineer,and Intern)
+
+-    Emplyoee Class with Employee constructor
+-    Manager Class extends Emplyoee class
+-    Engineer Class extends Emplyoee class
+-    Intern Class extends Emplyoee class
 
 ## Getting Started
 
@@ -63,10 +69,9 @@ To get a local copy up and running follow below steps.
 
 None
 
-## Installation
+## Installation:
 
-Clone the repo
-git clone git@github.com:NirmalaAbothu/team-profile-generator-11.10.20.git
+Before run this application you need to make sure you have installed node.js,fs and inquirer in your directory and clone the repo git clone git@github.com:NirmalaAbothu/team-profile-generator-11.10.20.git
 
 ## Credits
 
@@ -75,3 +80,11 @@ Followed the documentation about classes,inheritance and node js
 ## License & copyright
 
 Copyright © 2020 Nirmala Abothu
+
+## Project Demo Links
+
+[Demo1](https://drive.google.com/file/d/1hBcaEDT-_XuuYgYySyMhnbGhbmTX0i42/view?usp=sharing)
+
+[Demo2](https://drive.google.com/file/d/1urgaK02xDcrU1MrDxpNfEKZtGRKvBaIo/view?usp=sharing)
+
+[Demo3](https://drive.google.com/file/d/1oW2YMWOI8-x2HQnKcJnojnxs79tWBAMQ/view?usp=sharing)

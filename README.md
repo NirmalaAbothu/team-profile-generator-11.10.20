@@ -86,12 +86,9 @@ following commands
 
 -    run "npm install" or "npm i"
 -    run "npm run test"
-
-Before run the below command,navigate to project folder in Visual Studio Code,make sure no output folder exists,then run below command
-
 -    run "node app.js"
 
-after run the above command, then again navigate to project folder in Visual Studio Code,you should able to see "output"folder and "team.html" and "style.css" files in "output" folder.Open the "team.html" in browser and see the Team Profile page.
+after run the above command and answer all questions, then navigate to project folder in Visual Studio Code,you should able to see "output"folder and "team.html" and "style.css" files in "output" folder.Open the "team.html" in browser and see the Team Profile page.
 
 ## Credits
 

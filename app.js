@@ -15,11 +15,19 @@ const OUTPUT_DIR = path.resolve(__dirname, "output");
 console.log(OUTPUT_DIR);
 //creating team.html file in output folder
 const outputPath = path.join(OUTPUT_DIR, "team.html");
+//creating style.css file
+const outputpathForcss = path.join(OUTPUT_DIR, "style.css");
 console.log(outputPath);
 //htmlRender module
 const render = require("./lib/htmlRenderer");
 //array of employees
 var employees = [];
+
+//function to validate the input field
+const validateInputField = function (input) {
+     var result = input === "" ? "This field is mandatory" : true;
+     return result;
+};
 //function addManager to prompt the user with Manager questions
 function addManager() {
      inquirer
@@ -28,21 +36,25 @@ function addManager() {
                     type: "input",
                     name: "name",
                     message: "What is your manager's name?",
+                    validate: validateInputField,
                },
                {
                     type: "input",
                     name: "id",
                     message: "Please enter id of the emplyoee?",
+                    validate: validateInputField,
                },
                {
                     type: "input",
                     name: "email",
                     message: "Please enter email",
+                    validate: validateInputField,
                },
                {
                     type: "input",
                     name: "officeNumber",
                     message: "Please enter officenumber",
+                    validate: validateInputField,
                },
           ])
           .then(function (response) {
@@ -103,21 +115,25 @@ function addIntern() {
                     type: "input",
                     name: "name",
                     message: "What is your Intern name?",
+                    validate: validateInputField,
                },
                {
                     type: "input",
                     name: "id",
                     message: "Please enter id of the Intern",
+                    validate: validateInputField,
                },
                {
                     type: "input",
                     name: "email",
                     message: "Please enter email",
+                    validate: validateInputField,
                },
                {
                     type: "input",
                     name: "school",
                     message: "What is your school name?",
+                    validate: validateInputField,
                },
           ])
           .then((response) => {
@@ -147,21 +163,25 @@ function addEngineer() {
                     type: "input",
                     name: "name",
                     message: "What is your Engineer name?",
+                    validate: validateInputField,
                },
                {
                     type: "input",
                     name: "id",
                     message: "Please enter id of the Engineer",
+                    validate: validateInputField,
                },
                {
                     type: "input",
                     name: "email",
                     message: "Please enter email",
+                    validate: validateInputField,
                },
                {
                     type: "input",
                     name: "githubUsername",
                     message: "Please enter githubUsername",
+                    validate: validateInputField,
                },
           ])
           .then((response) => {
@@ -196,6 +216,8 @@ function teamCompleted() {
           if (!fs.existsSync(OUTPUT_DIR)) {
                fs.mkdirSync(OUTPUT_DIR);
                fs.writeFileSync(outputPath, output);
+               //calling function writeCssFile
+               writeCssFile();
           } else {
                fs.writeFileSync(outputPath, output);
                console.log(outputPath);
@@ -203,6 +225,15 @@ function teamCompleted() {
      } catch (e) {
           console.log("An error occured");
      }
+}
+
+//function to reading css content from style.txt and writing to style.css in output folder
+function writeCssFile() {
+     const origin = fs.createReadStream("./style.txt", { flags: "r" });
+     const destination = fs.createWriteStream(outputpathForcss, {
+          flags: "w+",
+     });
+     origin.pipe(destination);
 }
 //calling addManager function
 addManager();

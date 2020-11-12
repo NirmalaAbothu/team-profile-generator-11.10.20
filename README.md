@@ -10,7 +10,7 @@
 
 ![alt text](Assets/Images/tests.PNG)
 
-Implemented the code for Team Profile Generator from COmmand Line Interface
+This application is about Team Profile Generator from Command Line Interface
 This application allows user to add team members to team profile page.
 First applicatin prompts to user the following questions:
 
@@ -43,7 +43,17 @@ applicatin prompts to user the following questions:
 -    School name
 
 If user select TeamCompleted option from the list
-then application exit and will create the team profile.
+then application exit and will create the team.html and style.css files
+in output folder in directory.
+
+## Implemented the following functionalities
+
+-    addManager()
+-    addEngineer()
+-    addIntern()
+-    teamCompleted()
+-    writeCssFile()
+-    validateInputField
 
 ## Built With
 
@@ -69,9 +79,19 @@ To get a local copy up and running follow below steps.
 
 None
 
-## Installation:
+## Installation instructions:
 
-Before run this application you need to make sure you have installed node.js,fs and inquirer in your directory and clone the repo git clone git@github.com:NirmalaAbothu/team-profile-generator-11.10.20.git
+Clone the repo git clone git@github.com:NirmalaAbothu/team-profile-generator-11.10.20.git then open Git Bash window ,navigate to project folder then run
+following commands
+
+-    run "npm install" or "npm i"
+-    run "npm run test"
+
+Before run the below command,navigate to project folder in Visual Studio Code,make sure no output folder exists,then run below command
+
+-    run "node app.js"
+
+after run the above command, then again navigate to project folder in Visual Studio Code,you should able to see "output"folder and "team.html" and "style.css" files in "output" folder.Open the "team.html" in browser and see the Team Profile page.
 
 ## Credits
 
